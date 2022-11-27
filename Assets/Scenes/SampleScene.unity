@@ -503,9 +503,13 @@ MonoBehaviour:
   SegmentPrefabs:
   - {fileID: 5989786546105607158, guid: 6c1f9b8448f7292408091b58f3a3f165, type: 3}
   - {fileID: 3892025003441229994, guid: fc786bcb846332a40aeb3bd4f2beb58c, type: 3}
-  SpawnPosition: {x: 20, y: -2}
+  - {fileID: 4188261740080973224, guid: b1efb3b5334547f4db8b88f021a53fd6, type: 3}
+  - {fileID: 8590602573335671633, guid: fca00b1421ce6984191b115ca83f8509, type: 3}
+  - {fileID: 933048207112493087, guid: 334902f2601493a4497c26fec7bc2606, type: 3}
+  SpawnPosition: {x: 20, y: -2, z: 0}
   SegmentWidth: 20
   MovementMultiplier: 1
+  Lifetime: 20
 --- !u!114 &425834778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2029,6 +2033,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1878729126}
   - component: {fileID: 1878729127}
+  - component: {fileID: 1878729128}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -2044,7 +2049,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878729125}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2066,9 +2071,30 @@ MonoBehaviour:
   State: {fileID: 425834778}
   SegmentPrefabs:
   - {fileID: 3327681939820359335, guid: f3dbeffc54a575d4785439a9053dbe40, type: 3}
-  SpawnPosition: {x: 20, y: 2}
-  SegmentWidth: 20
+  SpawnPosition: {x: 7, y: 2, z: 1}
+  SegmentWidth: 10
+  MovementMultiplier: 0.2
+  Lifetime: 8
+--- !u!114 &1878729128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878729125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 581c1f10604f97e4a9df0c8281b2bff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  State: {fileID: 425834778}
+  SegmentPrefabs:
+  - {fileID: 830373545940310160, guid: 7894feafcc3b9f34580747054b9832c9, type: 3}
+  - {fileID: 646465156185791974, guid: 3d9b56b1ef6c2974ba037b96de6b0e14, type: 3}
+  SpawnPosition: {x: 7, y: -1.5, z: 1}
+  SegmentWidth: 2
   MovementMultiplier: 0.5
+  Lifetime: 8
 --- !u!1 &2124219209
 GameObject:
   m_ObjectHideFlags: 0
