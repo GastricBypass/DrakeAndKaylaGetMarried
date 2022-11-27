@@ -501,11 +501,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   State: {fileID: 425834778}
   SegmentPrefabs:
-  - {fileID: 5989786546105607158, guid: 6c1f9b8448f7292408091b58f3a3f165, type: 3}
-  - {fileID: 3892025003441229994, guid: fc786bcb846332a40aeb3bd4f2beb58c, type: 3}
-  - {fileID: 4188261740080973224, guid: b1efb3b5334547f4db8b88f021a53fd6, type: 3}
-  - {fileID: 8590602573335671633, guid: fca00b1421ce6984191b115ca83f8509, type: 3}
   - {fileID: 933048207112493087, guid: 334902f2601493a4497c26fec7bc2606, type: 3}
+  - {fileID: 4188261740080973224, guid: b1efb3b5334547f4db8b88f021a53fd6, type: 3}
   SpawnPosition: {x: 20, y: -2, z: 0}
   SegmentWidth: 20
   MovementMultiplier: 1
@@ -613,7 +610,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.40775186, g: 0.63115203, b: 0.7264151, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1252,7 +1249,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 0.7
 --- !u!212 &1425962538
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1294,7 +1291,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e51afd57be920f74899cc99405334973, type: 3}
   m_Color: {r: 0.3584906, g: 0.15770528, b: 0.12344251, a: 0.49019608}
   m_FlipX: 0
   m_FlipY: 0
@@ -1335,7 +1332,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.6
 --- !u!1 &1509341606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,7 +1383,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 0.7
 --- !u!114 &1509341609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1441,7 +1438,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e51afd57be920f74899cc99405334973, type: 3}
   m_Color: {r: 0.3584906, g: 0.15770528, b: 0.12344251, a: 0.49019608}
   m_FlipX: 0
   m_FlipY: 0
@@ -1467,7 +1464,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.6
 --- !u!1 &1526424773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1844,7 +1841,7 @@ Transform:
   - {fileID: 1773315703}
   - {fileID: 1425962539}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1839724158
 Animator:
@@ -2034,6 +2031,7 @@ GameObject:
   - component: {fileID: 1878729126}
   - component: {fileID: 1878729127}
   - component: {fileID: 1878729128}
+  - component: {fileID: 1878729129}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -2054,7 +2052,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1878729127
 MonoBehaviour:
@@ -2094,6 +2092,25 @@ MonoBehaviour:
   SpawnPosition: {x: 7, y: -1.5, z: 1}
   SegmentWidth: 2
   MovementMultiplier: 0.5
+  Lifetime: 8
+--- !u!114 &1878729129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878729125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 581c1f10604f97e4a9df0c8281b2bff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  State: {fileID: 425834778}
+  SegmentPrefabs:
+  - {fileID: 1248122180440099778, guid: 18d6d0e9cc8a0fb46992b17e14e8c627, type: 3}
+  SpawnPosition: {x: 7, y: -1.85, z: -1}
+  SegmentWidth: 2
+  MovementMultiplier: 1
   Lifetime: 8
 --- !u!1 &2124219209
 GameObject:
@@ -2207,7 +2224,7 @@ Transform:
   - {fileID: 228595885}
   - {fileID: 1509341607}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &2124219213
 Rigidbody2D:

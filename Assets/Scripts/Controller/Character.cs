@@ -162,6 +162,7 @@ public class Character : MonoBehaviour
     public void SetBubbleEnabled(bool enabled)
     {
         _bubbleEnabled = enabled;
+        Animator.SetBool("Dirty", enabled);
 
         Bubble.gameObject.SetActive(enabled);
         GetComponent<Collider2D>().isTrigger = enabled;
@@ -173,7 +174,7 @@ public class Character : MonoBehaviour
         var startFallAnimation = !_previousIsGrounded;
         var startRunAnimation = Mathf.Abs(TargetMoveDirection) > 0;
         
-        Animator.SetBool("Running", startRunAnimation);
+        //Animator.SetBool("Running", startRunAnimation);
         Animator.SetBool("Falling", startFallAnimation);
     }
 

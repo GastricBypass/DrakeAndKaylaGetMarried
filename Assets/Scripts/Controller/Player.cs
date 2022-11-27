@@ -23,7 +23,12 @@ public class Player : MonoBehaviour
     {
         Character.TargetMoveDirection = Input.GetAxis("Horizontal" + PlayerId);
 
-        if (Input.GetButton("Jump" + PlayerId))
+        // when dead, holding input down shouldn't move you constantly.
+        if (IsDead && Input.GetButtonDown("Jump" + PlayerId))
+        {
+            Character.ShouldJump = true;
+        }
+        else if (!IsDead && Input.GetButton("Jump" + PlayerId))
         {
             Character.ShouldJump = true;
         }
