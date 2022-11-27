@@ -1213,7 +1213,6 @@ GameObject:
   - component: {fileID: 1425962538}
   - component: {fileID: 1425962536}
   - component: {fileID: 1425962537}
-  - component: {fileID: 1425962540}
   m_Layer: 7
   m_Name: Bubble
   m_TagString: Untagged
@@ -1234,6 +1233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Character: {fileID: 1839724156}
+  EnableTime: 1
 --- !u!58 &1425962537
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1249,7 +1249,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.7
+  m_Radius: 0.6
 --- !u!212 &1425962538
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1317,22 +1317,6 @@ Transform:
   m_Father: {fileID: 1839724157}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1425962540
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425962535}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.6
 --- !u!1 &1509341606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,7 +1329,6 @@ GameObject:
   - component: {fileID: 1509341610}
   - component: {fileID: 1509341609}
   - component: {fileID: 1509341608}
-  - component: {fileID: 1509341611}
   m_Layer: 7
   m_Name: Bubble
   m_TagString: Untagged
@@ -1383,7 +1366,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.7
+  m_Radius: 0.6
 --- !u!114 &1509341609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1397,6 +1380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Character: {fileID: 2124219215}
+  EnableTime: 1
 --- !u!212 &1509341610
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1449,22 +1433,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1509341611
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1509341606}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.6
 --- !u!1 &1526424773
 GameObject:
   m_ObjectHideFlags: 0
