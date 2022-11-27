@@ -6,8 +6,10 @@ public class MovingItem : MonoBehaviour
 {
     public GameStateManager State;
 
+    public float MovementMultiplier = 1;
+
     private void FixedUpdate()
     {
-        transform.position += new Vector3(-State.Speed * Time.deltaTime, 0, 0);
+        transform.position += new Vector3(-State.Speed * Time.deltaTime * MovementMultiplier, 0, 0);
     }
 }

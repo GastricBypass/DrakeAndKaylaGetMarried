@@ -6,43 +6,56 @@ public class SegmentSpawner : MonoBehaviour
 {
     public GameStateManager State;
 
-    public List<MovingItem> PlatformPrefabs;
+    public List<MovingItem> SegmentPrefabs;
     public Vector2 SpawnPosition;
 
     [Tooltip("Equivalent to the width of the segment")]
-    public float SpawnInterval = 2;
+    public float SegmentWidth = 20;
+    public float MovementMultiplier = 1;
+
+    private MovingItem _previousItem;
 
     // Start is called before the first frame update
     void Start()
     {
-        SpawnPlatform();
-        StartCoroutine(WaitToSpawn(SpawnInterval));
+        //SpawnSegment();
+        //StartCoroutine(WaitToSpawn(SpawnInterval));
     }
 
     // Update is called once per frame
-    void Update()
+    private void LateUpdate()
     {
-        
+        if (_previousItem == null) 
+        {
+            SpawnSegment(SpawnPosition);
+        }
+        else if (SpawnPosition.x - _previousItem.transform.position.x >= SegmentWidth)
+        {
+            SpawnSegment(new Vector2(_previousItem.transform.position.x + SegmentWidth, _previousItem.transform.position.y));
+        }
     }
 
-    private IEnumerator WaitToSpawn(float interval)
-    {
-        yield return new WaitForSeconds(interval);
-        SpawnPlatform();
+    //private IEnumerator WaitToSpawn(float interval)
+    //{
+    //    yield return new WaitForSeconds(interval);
+    //    SpawnSegment();
 
-        StartCoroutine(WaitToSpawn(SpawnInterval / State.Speed));
-    }
+    //    StartCoroutine(WaitToSpawn(SpawnInterval / State.Speed));
+    //}
 
-    private void SpawnPlatform()
+    private void SpawnSegment(Vector2 position)
     {
-        var itemIndex = Random.Range(0, PlatformPrefabs.Count);
-        var newPlatform = Instantiate<MovingItem>(PlatformPrefabs[itemIndex]);
+        var itemIndex = Random.Range(0, SegmentPrefabs.Count);
+        var newPlatform = Instantiate<MovingItem>(SegmentPrefabs[itemIndex]);
 
         newPlatform.State = State;
-        newPlatform.transform.position = new Vector2(SpawnPosition.x, SpawnPosition.y);
+        newPlatform.MovementMultiplier = MovementMultiplier;
+        newPlatform.transform.position = position;
+
+        _previousItem = newPlatform;
 
         // let this fully pass through the camera and then destroy it, we should only have 2 active at once
-        StartCoroutine(DestroyAfterTime(newPlatform.gameObject, SpawnInterval / State.Speed * 2));
+        StartCoroutine(DestroyAfterTime(newPlatform.gameObject, SegmentWidth / State.Speed / MovementMultiplier * 2));
     }
 
     private IEnumerator DestroyAfterTime(GameObject itemToDestroy, float time)
