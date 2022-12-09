@@ -19,7 +19,8 @@ public class Character : MonoBehaviour
     public Collider2D WallCheckColliderRight; // a trigger on the right side of the player collider
     public Collider2D GroundCheckCollider; // a trigger on the bottom of the player collider
     public Collider2D SquishCheckCollider; // a trigger in the center of the player collider
-    
+
+    public MusicManager Music;
     public Animator Animator;
 
     [Tooltip("The height added from the origin to determine which character is higher to determine who wins collisions")]
@@ -55,7 +56,7 @@ public class Character : MonoBehaviour
     private ContactFilter2D _groundContactFilter;
     private bool _facingRight = true;
 
-    //private bool _needsAnimationSync = false;
+    private bool _needsAnimationSync = false;
 
     //public int CharacterLayer { get; set; }
     //public int AttackLayer { get; set; }
@@ -162,7 +163,6 @@ public class Character : MonoBehaviour
     public void SetBubbleEnabled(bool enabled)
     {
         _bubbleEnabled = enabled;
-        Animator.SetBool("Dirty", enabled);
 
         Bubble.gameObject.SetActive(enabled);
         GetComponent<Collider2D>().isTrigger = enabled;
@@ -171,9 +171,27 @@ public class Character : MonoBehaviour
 
     private void UpdateAnimation()
     {
+        if (_needsAnimationSync)
+        {
+            _needsAnimationSync = false;
+
+            var animationInfo = Animator.GetCurrentAnimatorClipInfo(0);
+            var numFrames = animationInfo[0].clip.frameRate * animationInfo[0].clip.length; // use num frames to set the start position
+            var currentState = Animator.GetCurrentAnimatorStateInfo(0).fullPathHash;
+
+            // begin current animation at a position where the animation should be in sync with the beat
+            Animator.Play(currentState, -1, 1 - (Music.BeatProgress / (numFrames / 4f))); // 4 frames per beat, always
+        }
+
         var startFallAnimation = !_previousIsGrounded;
-        var startRunAnimation = Mathf.Abs(TargetMoveDirection) > 0;
-        
+        var startDirtyAnimation = _bubbleEnabled;
+
+        if (Animator.GetBool("Dirty") != startDirtyAnimation || Animator.GetBool("Falling") != startFallAnimation)
+        {
+            _needsAnimationSync = true; // sync on next update when an animation state changes
+        }
+
+        Animator.SetBool("Dirty", _bubbleEnabled);
         //Animator.SetBool("Running", startRunAnimation);
         Animator.SetBool("Falling", startFallAnimation);
     }
