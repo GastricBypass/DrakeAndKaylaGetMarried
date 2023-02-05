@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStateManager : MonoBehaviour
 {
@@ -12,10 +13,30 @@ public class GameStateManager : MonoBehaviour
     public int Score = 0;
     public float PassiveScoreIncreaseInterval = 1;
 
-    // Start is called before the first frame update
-    void Start()
+    private Player[] _players;
+
+    private void Start()
     {
+        _players = FindObjectsOfType<Player>();
+
         StartCoroutine(PassiveScoreIncrease());
+    }
+
+    private void Update()
+    {
+        var allPlayersDead = true;
+        foreach (var player in _players)
+        {
+            if (!player.IsDead)
+            {
+                allPlayersDead = false;
+            }
+        }
+
+        if (allPlayersDead)
+        {
+            StartGameOver();
+        }
     }
 
     private void FixedUpdate()
@@ -35,5 +56,14 @@ public class GameStateManager : MonoBehaviour
     {
         Score += amount;
         Ui.UpdateScore(Score);
+    }
+
+    private void StartGameOver()
+    {
+        var scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        scoreKeeper.Score = Score;
+        scoreKeeper.NeedsToLogScore = true;
+
+        SceneManager.LoadScene("Menu");
     }
 }

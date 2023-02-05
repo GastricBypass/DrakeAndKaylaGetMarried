@@ -17,6 +17,17 @@ public class MusicManager : MonoBehaviour
 
     private float _beatTime => 60f / BeatsPerMinute;
 
+    private void Awake()
+    {
+        Debug.Log("One of em");
+        if (FindObjectsOfType<MusicManager>().Length > 1)
+        {
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(this);
+    }
+
     private void Start()
     {
         _timeToNextBeat = _beatTime;

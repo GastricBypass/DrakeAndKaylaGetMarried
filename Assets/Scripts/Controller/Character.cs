@@ -64,7 +64,7 @@ public class Character : MonoBehaviour
 
     private void Start()
     {
-        //StateManager = FindObjectOfType<StateManager>();
+        Music = FindObjectOfType<MusicManager>();
 
         if (Animator == null)
         {
