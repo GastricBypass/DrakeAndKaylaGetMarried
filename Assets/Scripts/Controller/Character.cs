@@ -167,6 +167,11 @@ public class Character : MonoBehaviour
         Bubble.gameObject.SetActive(enabled);
         GetComponent<Collider2D>().isTrigger = enabled;
         _rigidbody.gravityScale = enabled ? 0 : 1;
+
+        if (!enabled)
+        {
+            CurrentHitpoints = MaxHitpoints;
+        }
     }
 
     private void UpdateAnimation()
