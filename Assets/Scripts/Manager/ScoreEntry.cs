@@ -1,4 +1,7 @@
-﻿public struct ScoreEntry
+﻿using System;
+
+[Serializable]
+public struct ScoreEntry
 {
     public string Name;
     public int Score;

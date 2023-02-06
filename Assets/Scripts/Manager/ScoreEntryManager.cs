@@ -70,7 +70,7 @@ public class ScoreEntryManager : MonoBehaviour
         }
         else if (Input.GetAxis(axis) == 0)
         {
-            changingLetter = false;
+            changingLetter = false; // some bullshit because we're using an axis istead of a button
         }
     }
 
