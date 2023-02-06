@@ -61,7 +61,7 @@ public class GameStateManager : MonoBehaviour
     private void StartGameOver()
     {
         var scoreKeeper = FindObjectOfType<ScoreKeeper>();
-        scoreKeeper.Score = Score;
+        scoreKeeper.LatestScore = Score;
         scoreKeeper.NeedsToLogScore = true;
 
         SceneManager.LoadScene("Menu");

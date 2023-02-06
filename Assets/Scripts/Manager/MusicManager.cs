@@ -19,7 +19,6 @@ public class MusicManager : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("One of em");
         if (FindObjectsOfType<MusicManager>().Length > 1)
         {
             Destroy(gameObject);

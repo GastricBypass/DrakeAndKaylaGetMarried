@@ -5,29 +5,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MenuManager : MonoBehaviour
+public class GameStartManager : MonoBehaviour
 {
     public Image KaylaReady;
     public Image DrakeReady;
-
-    public GameObject HighscoreEntryPage;
-    public Button EnterScoreButton;
-    public TMP_Text Score;
 
     private bool _kaylaReady = false;
     private bool _drakeReady = false;
 
     void Start()
     {
-        var scoreKeeper = FindObjectOfType<ScoreKeeper>();
-        if (scoreKeeper.NeedsToLogScore)
-        {
-            scoreKeeper.NeedsToLogScore = false;
-            ShowHighscoreEntryPage(scoreKeeper.Score);
-        }
+        
     }
 
-    void Update()
+    private void LateUpdate()
     {
         if (Input.GetButtonDown("JumpKayla"))
         {
@@ -55,17 +46,5 @@ public class MenuManager : MonoBehaviour
     {
         _drakeReady = !_drakeReady;
         DrakeReady.gameObject.SetActive(_drakeReady);
-    }
-
-    private void ShowHighscoreEntryPage(int score)
-    {
-        HighscoreEntryPage.gameObject.SetActive(true);
-        Score.text = score.ToString();
-    }
-
-    public void SaveHighscoreEntry()
-    {
-        Debug.Log(Score.text);
-        HighscoreEntryPage.gameObject.SetActive(false);
     }
 }
