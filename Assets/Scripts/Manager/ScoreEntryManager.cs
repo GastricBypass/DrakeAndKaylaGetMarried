@@ -18,7 +18,9 @@ public class ScoreEntryManager : MonoBehaviour
     private bool _drakeLockedIn;
 
     private bool _drakeChangingIndex = false;
+    private bool _drakeChangingLetter = false;
     private bool _kaylaChangingIndex = false;
+    private bool _kaylaChangingLetter = false;
 
     public bool NeedsToLogScore => _scoreKeeper.NeedsToLogScore;
 
@@ -34,74 +36,65 @@ public class ScoreEntryManager : MonoBehaviour
     {
         if (Input.GetButtonDown("JumpKayla"))
         {
-            if (_kaylaSelectedTextIndex < KaylaNameInitials.Count)
-            {
-                IncrementInitial(KaylaNameInitials, _kaylaSelectedTextIndex);
-            }
-            else
-            {
-                _kaylaLockedIn = !_kaylaLockedIn;
-            }
+            _kaylaLockedIn = !_kaylaLockedIn;
         }
 
         if (Input.GetButtonDown("JumpDrake"))
         {
-            if (_drakeSelectedTextIndex < DrakeNameInitials.Count)
-            {
-                IncrementInitial(DrakeNameInitials, _drakeSelectedTextIndex);
-            }
-            else
-            {
-                _drakeLockedIn = !_drakeLockedIn;
-            }
+            _drakeLockedIn = !_drakeLockedIn;
         }
 
-        if (!_kaylaChangingIndex && Input.GetAxis("HorizontalKayla") > 0)
-        {
-            _kaylaChangingIndex = true;
-            if (_kaylaSelectedTextIndex < KaylaNameInitials.Count + 1)
-            {
-                _kaylaSelectedTextIndex++;
-            }
-        }
-        else if (!_kaylaChangingIndex && Input.GetAxis("HorizontalKayla") < 0)
-        {
-            _kaylaChangingIndex = true;
-            if (_kaylaSelectedTextIndex > 0)
-            {
-                _kaylaSelectedTextIndex--;
-            }
-        }
-        else if (Input.GetAxis("HorizontalDrake") == 0)
-        {
-            _kaylaChangingIndex = false; // some bullshit because we're using an axis istead of a button
-        }
+        HandleLetterChangeInputs("VerticalKayla", KaylaNameInitials, _kaylaSelectedTextIndex, ref _kaylaChangingLetter);
+        HandleLetterChangeInputs("VerticalDrake", DrakeNameInitials, _drakeSelectedTextIndex, ref _drakeChangingLetter);
 
-        if (!_drakeChangingIndex && Input.GetAxis("HorizontalDrake") > 0)
-        {
-            _drakeChangingIndex = true;
-            if (_drakeSelectedTextIndex < DrakeNameInitials.Count + 1)
-            {
-                _drakeSelectedTextIndex++;
-            }
-        }
-        else if (!_drakeChangingIndex && Input.GetAxis("HorizontalDrake") < 0)
-        {
-            _drakeChangingIndex = true;
-            if (_drakeSelectedTextIndex > 0)
-            {
-                _drakeSelectedTextIndex--;
-            }
-        }
-        else if (Input.GetAxis("HorizontalDrake") == 0)
-        {
-            Debug.Log("Resetting");
-            _drakeChangingIndex = false; // some bullshit because we're using an axis istead of a button
-        }
+        HandleIndexChangeInputs("HorizontalKayla", KaylaNameInitials, ref _kaylaSelectedTextIndex, ref _kaylaChangingIndex);
+        HandleIndexChangeInputs("HorizontalDrake", DrakeNameInitials, ref _drakeSelectedTextIndex, ref _drakeChangingIndex);
 
         if (_kaylaLockedIn && _drakeLockedIn)
         {
             SaveHighscoreEntry();
+        }
+    }
+
+    private void HandleLetterChangeInputs(string axis, List<TMP_Text> initials, int selectedIndex, ref bool changingLetter)
+    {
+        if (!changingLetter && Input.GetAxis(axis) > 0)
+        {
+            changingLetter = true;
+            IncrementInitial(initials, selectedIndex, true);
+        }
+        else if (!changingLetter && Input.GetAxis(axis) < 0)
+        {
+            changingLetter = true;
+            IncrementInitial(initials, selectedIndex, false);
+        }
+        else if (Input.GetAxis(axis) == 0)
+        {
+            changingLetter = false;
+        }
+    }
+
+    private void HandleIndexChangeInputs(string axis, List<TMP_Text> initials, ref int selectedIndex, ref bool changingIndex)
+    {
+        if (!changingIndex && Input.GetAxis(axis) > 0)
+        {
+            changingIndex = true;
+            if (selectedIndex < initials.Count - 1)
+            {
+                selectedIndex++;
+            }
+        }
+        else if (!changingIndex && Input.GetAxis(axis) < 0)
+        {
+            changingIndex = true;
+            if (selectedIndex > 0)
+            {
+                selectedIndex--;
+            }
+        }
+        else if (Input.GetAxis(axis) == 0)
+        {
+            changingIndex = false; // some bullshit because we're using an axis istead of a button
         }
     }
 
@@ -126,10 +119,12 @@ public class ScoreEntryManager : MonoBehaviour
         return name;
     }
 
-    private void IncrementInitial(List<TMP_Text> initials, int index)
+    private void IncrementInitial(List<TMP_Text> initials, int index, bool up)
     {
         var currentInitial = initials[index].text.ToLower().ToCharArray()[0];
-        initials[index].text = GetNextLetter(currentInitial).ToString().ToUpper();
+        initials[index].text = up ?
+            GetNextLetter(currentInitial).ToString().ToUpper() :
+            GetPrevLetter(currentInitial).ToString().ToUpper();
     }
 
     private char GetNextLetter(char c)
@@ -138,6 +133,17 @@ public class ScoreEntryManager : MonoBehaviour
         if (c > 'z')
         {
             c = 'a';
+        }
+
+        return c;
+    }
+
+    private char GetPrevLetter(char c)
+    {
+        c--;
+        if (c < 'a')
+        {
+            c = 'z';
         }
 
         return c;
