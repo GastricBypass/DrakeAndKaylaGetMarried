@@ -6,16 +6,17 @@ public class MenuManager : MonoBehaviour
 {
     public GameStartManager GameStartPage;
     public ScoreEntryManager ScoreEntryPage;
+    public ScoreDisplay ScoreDisplay;
 
-    private void Update()
+    private void LateUpdate()
     {
         try 
         {
-            if (ScoreEntryPage.NeedsToLogScore && (GameStartPage.enabled || !ScoreEntryPage.enabled))
+            if (ScoreEntryPage.NeedsToLogScore && (GameStartPage.gameObject.activeSelf || !ScoreEntryPage.gameObject.activeSelf))
             {
                 ShowScoreEntryPage();
             }
-            else if (!ScoreEntryPage.NeedsToLogScore && (!GameStartPage.enabled || ScoreEntryPage.enabled))
+            else if (!ScoreEntryPage.NeedsToLogScore && (!GameStartPage.gameObject.activeSelf || ScoreEntryPage.gameObject.activeSelf))
             {
                 ShowGameStartPage();
             }
@@ -36,5 +37,6 @@ public class MenuManager : MonoBehaviour
     {
         ScoreEntryPage.gameObject.SetActive(false);
         GameStartPage.gameObject.SetActive(true);
+        ScoreDisplay.Refresh();
     }
 }

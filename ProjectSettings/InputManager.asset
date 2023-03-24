@@ -43,7 +43,7 @@ InputManager:
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: w
-    altNegativeButton: 
+    altNegativeButton: s
     altPositiveButton: 
     gravity: 3
     dead: 0.19
@@ -59,7 +59,7 @@ InputManager:
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: up
-    altNegativeButton: 
+    altNegativeButton: down
     altPositiveButton: 
     gravity: 3
     dead: 0.19
@@ -74,7 +74,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: w
+    positiveButton: space
     altNegativeButton: 
     altPositiveButton: joystick button 0
     gravity: 1000
@@ -90,7 +90,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: up
+    positiveButton: '[0]'
     altNegativeButton: 
     altPositiveButton: joystick button 0
     gravity: 1000
