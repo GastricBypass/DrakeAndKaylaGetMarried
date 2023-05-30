@@ -30,6 +30,7 @@ public class Character : MonoBehaviour
     public Bubble Bubble;
     public Player LovingPartner;
     public float BubblePushForce;
+    public Vector2 BubbleFloatVector;
 
     public AudioSource AudioSource;
     public AudioClip JumpSound;
@@ -127,13 +128,7 @@ public class Character : MonoBehaviour
         var otherCharacter = collision.collider.GetComponent<Character>();
         if (otherCharacter != null)
         {
-            var myHeight = transform.position.y + DamageCalculationHeight;
-            var otherHeight = otherCharacter.transform.position.y + otherCharacter.DamageCalculationHeight;
-            if (myHeight > otherHeight)
-            {
-                otherCharacter.TakeDamage(DamageDealt);
-                _forceJump = true;
-            }
+            _forceJump = true;
         }
     }
 
@@ -172,6 +167,8 @@ public class Character : MonoBehaviour
         {
             CurrentHitpoints = MaxHitpoints;
         }
+
+        _rigidbody.velocity = BubbleFloatVector * 10;
     }
 
     private void UpdateAnimation()
@@ -222,7 +219,7 @@ public class Character : MonoBehaviour
             return direction * BubblePushForce;
         }
 
-        return _rigidbody.velocity.normalized * _rigidbody.velocity.magnitude * 0.95f;
+        return (_rigidbody.velocity.normalized * _rigidbody.velocity.magnitude * 0.95f) + BubbleFloatVector;
     }
     
     private float CalculateVerticalMovement()
