@@ -264,6 +264,9 @@ MonoBehaviour:
   - {fileID: 4188261740080973224, guid: b1efb3b5334547f4db8b88f021a53fd6, type: 3}
   - {fileID: 8590602573335671633, guid: fca00b1421ce6984191b115ca83f8509, type: 3}
   - {fileID: 4414154624167946321, guid: 8104241e8fa3bb049b5b2f0f39a91ccc, type: 3}
+  - {fileID: 3168333659872594474, guid: 6778083869e47ce4797adddc34c2dcdc, type: 3}
+  - {fileID: 5846275966008992476, guid: fae327c0033cadc49a2900a7ffa0c77a, type: 3}
+  - {fileID: 2289440122313458586, guid: 3410d8865acde60469b3c40052384a5c, type: 3}
   SpawnPosition: {x: 20, y: -2, z: 0}
   SegmentWidth: 20
   MovementMultiplier: 1
@@ -2661,6 +2664,7 @@ MonoBehaviour:
   State: {fileID: 274464221}
   SegmentPrefabs:
   - {fileID: 3327681939820359335, guid: f3dbeffc54a575d4785439a9053dbe40, type: 3}
+  - {fileID: 3327681939820359335, guid: acff11d88a8f38f4f89309e0763005e4, type: 3}
   SpawnPosition: {x: 7, y: 2, z: 1}
   SegmentWidth: 10
   MovementMultiplier: 0.2
