@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   State: {fileID: 0}
+  MovementMultiplier: 1
   Tall: 0
 --- !u!61 &8723065333752581958
 BoxCollider2D:
