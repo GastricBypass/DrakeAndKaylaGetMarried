@@ -97,6 +97,11 @@ public class Character : MonoBehaviour
         }
     }
 
+    public void Bounce()
+    {
+        _forceJump = true;
+    }
+
     public void TakeDamage(float damage)
     {
         Debug.Log(name + " takes " + damage + " damage");
