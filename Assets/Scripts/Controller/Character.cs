@@ -33,8 +33,12 @@ public class Character : MonoBehaviour
     public Vector2 BubbleFloatVector;
 
     public AudioSource AudioSource;
-    public AudioClip JumpSound;
+    public AudioClip BubbleSound;
+    public float BubbleVolume = 1;
+    public AudioClip PickupSound;
+    public float PickupVolume = 1;
     public AudioClip DeathSound;
+    public float DeathVolume = 1;
 
     public float TargetMoveDirection { get; set; }
     public bool ShouldJump { get; set; }
@@ -93,7 +97,17 @@ public class Character : MonoBehaviour
         _rigidbody.velocity = CalculateMovement();
         if (IsSquished())
         {
-            Die();
+            TakeDamage(1);
+        }
+    }
+
+    public void Pickup()
+    {
+        if (PickupSound != null && AudioSource != null)
+        {
+            AudioSource.volume = PickupVolume;
+            AudioSource.clip = PickupSound;
+            AudioSource.Play();
         }
     }
 
@@ -105,6 +119,7 @@ public class Character : MonoBehaviour
     public void TakeDamage(float damage)
     {
         Debug.Log(name + " takes " + damage + " damage");
+        if (CurrentHitpoints <= 0) return;
 
         CurrentHitpoints -= damage;
         if (CurrentHitpoints <= 0)
@@ -154,7 +169,7 @@ public class Character : MonoBehaviour
 
         if (DeathSound != null && AudioSource != null)
         {
-            AudioSource.volume = 1;
+            AudioSource.volume = DeathVolume;
             AudioSource.clip = DeathSound;
             AudioSource.Play();
         }
@@ -170,7 +185,18 @@ public class Character : MonoBehaviour
 
         if (!enabled)
         {
+            if (BubbleSound != null && AudioSource != null)
+            {
+                AudioSource.volume = BubbleVolume;
+                AudioSource.clip = BubbleSound;
+                AudioSource.Play();
+            }
+
             CurrentHitpoints = MaxHitpoints;
+        }
+        else
+        {
+            CurrentHitpoints = 0;
         }
 
         _rigidbody.velocity = BubbleFloatVector * 10;
@@ -240,12 +266,6 @@ public class Character : MonoBehaviour
             {
                 _jumping = true;
                 verticalMovement = JumpForce;
-
-                if (JumpSound != null && AudioSource != null)
-                {
-                    AudioSource.clip = JumpSound;
-                    AudioSource.Play();
-                }
             }
             ShouldJump = false;
             _forceJump = false;

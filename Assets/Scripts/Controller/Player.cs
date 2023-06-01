@@ -37,4 +37,9 @@ public class Player : MonoBehaviour
             Character.ShouldEndJump = true;
         }
     }
+
+    public void Pickup()
+    {
+        Character.Pickup();
+    }
 }

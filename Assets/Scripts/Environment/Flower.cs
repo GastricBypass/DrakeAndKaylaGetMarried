@@ -17,8 +17,10 @@ public class Flower : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Player>() != null)
+        var player = collision.GetComponent<Player>();
+        if (player != null && !player.IsDead)
         {
+            player.Pickup();
             Parent.State.IncreaseScore(Points);
             Destroy(this.gameObject);
         }

@@ -15,6 +15,8 @@ public class GameStateManager : MonoBehaviour
 
     private Player[] _players;
 
+    private bool _gameOver;
+
     private void Start()
     {
         _players = FindObjectsOfType<Player>();
@@ -33,7 +35,7 @@ public class GameStateManager : MonoBehaviour
             }
         }
 
-        if (allPlayersDead)
+        if (allPlayersDead && !_gameOver)
         {
             StartGameOver();
         }
@@ -47,23 +49,38 @@ public class GameStateManager : MonoBehaviour
     private IEnumerator PassiveScoreIncrease()
     {
         yield return new WaitForSeconds(PassiveScoreIncreaseInterval);
+
         IncreaseScore(1);
 
         StartCoroutine(PassiveScoreIncrease());
     }
 
     public void IncreaseScore(int amount)
-    {
-        Score += amount;
-        Ui.UpdateScore(Score);
+{
+        if (!_gameOver)
+        {
+            Score += amount;
+            Ui.UpdateScore(Score);
+        }
     }
 
     private void StartGameOver()
     {
+        _gameOver = true;
         var scoreKeeper = FindObjectOfType<ScoreKeeper>();
         scoreKeeper.LatestScore = Score;
         scoreKeeper.NeedsToLogScore = true;
 
+        // Show game over screen
+
+        StartCoroutine(WaitAndLoadMenu(2));
+    }
+
+    private IEnumerator WaitAndLoadMenu(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        _gameOver = false;
         SceneManager.LoadScene("Menu");
     }
 }
