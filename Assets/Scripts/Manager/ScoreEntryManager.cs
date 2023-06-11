@@ -11,6 +11,14 @@ public class ScoreEntryManager : MonoBehaviour
     public List<TMP_Text> KaylaNameInitials;
     public List<TMP_Text> DrakeNameInitials;
 
+    public Transform KaylaSelection;
+    public List<float> KaylaSelectionPositions;
+    public Transform DrakeSelection;
+    public List<float> DrakeSelectionPositions;
+
+    public Image KaylaReady;
+    public Image DrakeReady;
+
     private int _kaylaSelectedTextIndex = 0;
     private int _drakeSelectedTextIndex = 0;
 
@@ -37,11 +45,13 @@ public class ScoreEntryManager : MonoBehaviour
         if (Input.GetButtonDown("JumpKayla"))
         {
             _kaylaLockedIn = !_kaylaLockedIn;
+            KaylaReady.gameObject.SetActive(_kaylaLockedIn);
         }
 
         if (Input.GetButtonDown("JumpDrake"))
         {
             _drakeLockedIn = !_drakeLockedIn;
+            DrakeReady.gameObject.SetActive(_drakeLockedIn);
         }
 
         HandleLetterChangeInputs("VerticalKayla", KaylaNameInitials, _kaylaSelectedTextIndex, ref _kaylaChangingLetter);
@@ -49,6 +59,20 @@ public class ScoreEntryManager : MonoBehaviour
 
         HandleIndexChangeInputs("HorizontalKayla", KaylaNameInitials, ref _kaylaSelectedTextIndex, ref _kaylaChangingIndex);
         HandleIndexChangeInputs("HorizontalDrake", DrakeNameInitials, ref _drakeSelectedTextIndex, ref _drakeChangingIndex);
+
+        if (_kaylaChangingIndex)
+        {
+            KaylaSelection.transform.localPosition = new Vector3(KaylaSelectionPositions[_kaylaSelectedTextIndex], 
+                KaylaSelection.transform.localPosition.y, 
+                KaylaSelection.transform.localPosition.z);
+        }
+
+        if (_drakeChangingIndex)
+        {
+            DrakeSelection.transform.localPosition = new Vector3(DrakeSelectionPositions[_drakeSelectedTextIndex], 
+                DrakeSelection.transform.localPosition.y, 
+                DrakeSelection.transform.localPosition.z);
+        }
 
         if (_kaylaLockedIn && _drakeLockedIn)
         {
