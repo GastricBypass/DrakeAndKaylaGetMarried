@@ -272,6 +272,10 @@ MonoBehaviour:
   - {fileID: 4536227004629406507, guid: b61fde264bde10949b005f501d677ac9, type: 3}
   - {fileID: 8477481749473296110, guid: b46dcb3152fe2b545abb85ab0af62e3d, type: 3}
   - {fileID: 7496215246689654998, guid: 087d8efc90d9c274a8c676df11889cba, type: 3}
+  - {fileID: 9197708661568578417, guid: 9c7d68d45bef4da449abcb7287734ad4, type: 3}
+  - {fileID: 8669858821323048037, guid: 0865eee1bbde8fc4fbcdb2b91727802e, type: 3}
+  - {fileID: 1735408197989986766, guid: cf21d894d3224a84fb5dc2d64eaccee1, type: 3}
+  - {fileID: 1654112076339820424, guid: dd962c6e9fd155c4196d760fc901d648, type: 3}
   SpawnPosition: {x: 20, y: -2, z: 0}
   SegmentWidth: 20
   MovementMultiplier: 1
