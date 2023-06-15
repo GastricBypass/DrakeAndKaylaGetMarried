@@ -100,5 +100,3 @@ MonoBehaviour:
   PossibleObjects:
   - {fileID: 1524692759812408497, guid: 88189efedc389764ba1b9c7acbe0483f, type: 3}
   - {fileID: 8514467853815381796, guid: 99c0e131b72d6ad479056727d5b14b6d, type: 3}
-  - {fileID: 6758010950036688907, guid: 86304e9f40d0c224d92cb7357a2e823b, type: 3}
-  - {fileID: 8935916251887021210, guid: b388b32b51ff9f74abe32cd76335fde5, type: 3}
