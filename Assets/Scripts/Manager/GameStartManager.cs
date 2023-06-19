@@ -13,11 +13,6 @@ public class GameStartManager : MonoBehaviour
     private bool _kaylaReady = false;
     private bool _drakeReady = false;
 
-    void Start()
-    {
-        
-    }
-
     private void LateUpdate()
     {
         if (Input.GetButtonDown("JumpKayla"))

@@ -9,7 +9,7 @@ public class FadingElement : MonoBehaviour
     public TMP_Text Text;
     public float FadeRate = 1;
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         Text.color = new Color(
             Text.color.r,

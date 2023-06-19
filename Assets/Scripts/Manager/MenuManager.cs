@@ -8,6 +8,11 @@ public class MenuManager : MonoBehaviour
     public ScoreEntryManager ScoreEntryPage;
     public ScoreDisplay ScoreDisplay;
 
+    private void Start()
+    {
+        Cursor.visible = false;
+    }
+
     private void LateUpdate()
     {
         try 

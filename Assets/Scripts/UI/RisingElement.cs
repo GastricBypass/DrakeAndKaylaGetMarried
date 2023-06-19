@@ -6,7 +6,7 @@ public class RisingElement : MonoBehaviour
 {
     public float RiseRate = 1;
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         transform.localPosition = new Vector3(
             transform.localPosition.x, 
