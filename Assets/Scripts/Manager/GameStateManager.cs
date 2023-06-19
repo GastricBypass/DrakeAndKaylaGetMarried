@@ -55,12 +55,12 @@ public class GameStateManager : MonoBehaviour
         StartCoroutine(PassiveScoreIncrease());
     }
 
-    public void IncreaseScore(int amount)
+    public void IncreaseScore(int amount, bool notify = false)
 {
         if (!_gameOver)
         {
             Score += amount;
-            Ui.UpdateScore(Score);
+            Ui.UpdateScore(Score, notify, amount > 0);
         }
     }
 

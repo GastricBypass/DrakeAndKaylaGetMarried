@@ -22,6 +22,7 @@ public class Character : MonoBehaviour
 
     public MusicManager Music;
     public Animator Animator;
+    public GameStateManager GameStateManager;
 
     [Tooltip("The height added from the origin to determine which character is higher to determine who wins collisions")]
     public float DamageCalculationHeight;
@@ -74,6 +75,10 @@ public class Character : MonoBehaviour
         if (Animator == null)
         {
             Animator = GetComponent<Animator>();
+        }
+        if (GameStateManager == null)
+        {
+            GameStateManager = FindObjectOfType<GameStateManager>();
         }
 
         _wallContactFilter.useTriggers = false;
@@ -154,16 +159,8 @@ public class Character : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("Died");
-        // Make not collide with barriers but still collide with borders
-        // Make float around randomly
-        // Allow tapping jump to push you slightly towards the other player
-
-
-        //foreach (var collider in GetComponents<Collider2D>())
-        //{
-        //    collider.isTrigger = true; // body should pass through colliders on death
-        //}
+        // feels cheap, reconsider later
+        //GameStateManager.IncreaseScore(-3, true);
 
         SetBubbleEnabled(true);
 

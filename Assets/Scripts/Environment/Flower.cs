@@ -24,7 +24,7 @@ public class Flower : MonoBehaviour
         {
             _pickedUp = true; // for  the scenario where both players hit the flower in the same frame
             player.Pickup();
-            Parent.State.IncreaseScore(Points);
+            Parent.State.IncreaseScore(Points, true);
             Destroy(this.gameObject);
         }
     }
