@@ -2264,7 +2264,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1839724154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.758, y: -2, z: -0.2}
+  m_LocalPosition: {x: -4.6, y: -2, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2762,7 +2762,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124219209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: -2, z: -0.3}
+  m_LocalPosition: {x: -3.4, y: -2, z: -0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3002,7 +3002,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8327855391456669249, guid: 67e4854381fbb13418509da26e04fb0b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8327855391456669249, guid: 67e4854381fbb13418509da26e04fb0b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3040,10 +3040,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: State
-      value: 
-      objectReference: {fileID: 274464221}
     - target: {fileID: 8327855391456669251, guid: 67e4854381fbb13418509da26e04fb0b, type: 3}
       propertyPath: m_Name
       value: Starting Scene
