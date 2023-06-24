@@ -2575,6 +2575,7 @@ GameObject:
   - component: {fileID: 1878729127}
   - component: {fileID: 1878729128}
   - component: {fileID: 1878729129}
+  - component: {fileID: 1878729130}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -2635,8 +2636,11 @@ MonoBehaviour:
   - {fileID: 646465156185791974, guid: 3d9b56b1ef6c2974ba037b96de6b0e14, type: 3}
   - {fileID: 646465156185791974, guid: 05c229cc0051ad84d89b674e1bf5705a, type: 3}
   - {fileID: 646465156185791974, guid: bd2c12d66401fce41bf2d195858c1646, type: 3}
+  - {fileID: 646465156185791974, guid: b3ee17ffe6f13b342baa1c418a63c41d, type: 3}
+  - {fileID: 646465156185791974, guid: fe3910d13904b034ea3f757161ffd183, type: 3}
+  - {fileID: 646465156185791974, guid: 34a063547d841d340b7483c01a40340f, type: 3}
   SpawnPosition: {x: 7, y: -1.5, z: 1}
-  SegmentWidth: 3
+  SegmentWidth: 1.2
   MovementMultiplier: 0.5
   Lifetime: 8
 --- !u!114 &1878729129
@@ -2658,6 +2662,23 @@ MonoBehaviour:
   SegmentWidth: 2
   MovementMultiplier: 1
   Lifetime: 8
+--- !u!114 &1878729130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878729125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d0efa8c0316085439e58a7680ddfa95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Spawner: {fileID: 1878729128}
+  MinSegmentWidth: 1
+  MaxSegmentWidth: 3
+  MinChangeInterval: 8
+  MaxChangeInterval: 15
 --- !u!1 &2124219209
 GameObject:
   m_ObjectHideFlags: 0
