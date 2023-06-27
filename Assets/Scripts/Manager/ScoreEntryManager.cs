@@ -124,7 +124,6 @@ public class ScoreEntryManager : MonoBehaviour
 
     private void SaveHighscoreEntry()
     {
-        Debug.Log(_scoreKeeper.LatestScore);
         _scoreKeeper.NeedsToLogScore = false;
         var kaylaName = AggregateInitials(KaylaNameInitials);
         var drakeName = AggregateInitials(DrakeNameInitials);

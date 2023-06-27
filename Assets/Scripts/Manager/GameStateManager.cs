@@ -14,12 +14,16 @@ public class GameStateManager : MonoBehaviour
     public float PassiveScoreIncreaseInterval = 1;
 
     private Player[] _players;
-
+    private ScoreKeeper _scoreKeeper;
     private bool _gameOver;
+    private int _previousHighscore;
 
     private void Start()
     {
+        _scoreKeeper = FindObjectOfType<ScoreKeeper>();
         _players = FindObjectsOfType<Player>();
+
+        _previousHighscore = _scoreKeeper.GetHighscore();
 
         StartCoroutine(PassiveScoreIncrease());
     }
@@ -61,19 +65,23 @@ public class GameStateManager : MonoBehaviour
         {
             Score += amount;
             Ui.UpdateScore(Score, notify, amount > 0);
+
+            if (Score > _previousHighscore)
+            {
+                Ui.NotifyNewHighscore();
+            }
         }
     }
 
     private void StartGameOver()
     {
         _gameOver = true;
-        var scoreKeeper = FindObjectOfType<ScoreKeeper>();
-        scoreKeeper.LatestScore = Score;
-        scoreKeeper.NeedsToLogScore = true;
+        _scoreKeeper.LatestScore = Score;
+        _scoreKeeper.NeedsToLogScore = true;
 
-        // Show game over screen
+        Ui.NotifyGameOver();
 
-        StartCoroutine(WaitAndLoadMenu(2));
+        StartCoroutine(WaitAndLoadMenu(2.5f));
     }
 
     private IEnumerator WaitAndLoadMenu(float time)

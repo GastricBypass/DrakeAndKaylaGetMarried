@@ -123,7 +123,7 @@ public class Character : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        Debug.Log(name + " takes " + damage + " damage");
+        //Debug.Log(name + " takes " + damage + " damage");
         if (CurrentHitpoints <= 0) return;
 
         CurrentHitpoints -= damage;

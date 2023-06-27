@@ -60,8 +60,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928a5c9aa6158104a88456103c9d4a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Text: {fileID: 1618848441084456617}
+  Graphic: {fileID: 1618848441084456617}
   FadeRate: 0.7
+  FadeIn: 0
+  DestroyOnComplete: 1
 --- !u!114 &1618848441084456631
 MonoBehaviour:
   m_ObjectHideFlags: 0

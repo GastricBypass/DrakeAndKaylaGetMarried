@@ -174,6 +174,10 @@ MonoBehaviour:
   ScoreUpText: {fileID: 8748000642717000085, guid: 4adff6cf408fa0b4f8fc62804c998ba6, type: 3}
   ScoreDownText: {fileID: 1618848441084456619, guid: 95a0c2457fbddf5439ff48f01611d513, type: 3}
   ScoreNotificationSpawnPosition: {x: 0, y: 175, z: 0}
+  NewHighscoreText: {fileID: 8417387835441397279, guid: fc5405a6fb8aebd47a299ce6ea4791f1, type: 3}
+  NewHighscoreTextSpawnPosition: {x: 0, y: 100, z: 0}
+  GameOverText: {fileID: 8613978002836187923, guid: fac8a4bc4ce770f4cb468ac969f19496, type: 3}
+  GameOverTextSpawnPosition: {x: 0, y: 50, z: 0}
 --- !u!1 &228595884
 GameObject:
   m_ObjectHideFlags: 0

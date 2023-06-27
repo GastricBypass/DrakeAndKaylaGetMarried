@@ -6,18 +6,52 @@ using TMPro;
 
 public class FadingElement : MonoBehaviour
 {
-    public TMP_Text Text;
+    public Graphic Graphic;
     public float FadeRate = 1;
+    public bool FadeIn = false;
+    public bool DestroyOnComplete = false;
 
     private void FixedUpdate()
     {
-        Text.color = new Color(
-            Text.color.r,
-            Text.color.g, 
-            Text.color.b, 
-            Text.color.a - (FadeRate * Time.deltaTime));
+        if (FadeIn)
+        {
+            DoFadeIn();
+        }
+        else 
+        {
+            DoFadeOut();
+        }
+    }
 
-        if (Text.color.a <= 0)
+    private void DoFadeIn()
+    {
+        if (Graphic.color.a < 1)
+        {
+            Graphic.color = new Color(
+                Graphic.color.r,
+                Graphic.color.g,
+                Graphic.color.b,
+                Graphic.color.a + (FadeRate * Time.deltaTime));
+        }
+
+        if (DestroyOnComplete && Graphic.color.a >= 1)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void DoFadeOut()
+    {
+        if (Graphic.color.a > 0)
+        {
+            Graphic.color = new Color(
+                Graphic.color.r,
+                Graphic.color.g,
+                Graphic.color.b,
+                Graphic.color.a - (FadeRate * Time.deltaTime));
+        }
+
+        if (DestroyOnComplete && Graphic.color.a <= 0)
         {
             Destroy(this.gameObject);
         }

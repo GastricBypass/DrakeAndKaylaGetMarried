@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Linq;
 using UnityEngine;
 
 public class ScoreKeeper : MonoBehaviour
@@ -60,5 +61,17 @@ public class ScoreKeeper : MonoBehaviour
         file.Close();
 
         LatestScore = 0;
+    }
+
+    public int GetHighscore()
+    {
+        if (ScoreEntries.Any())
+        {
+            return ScoreEntries.Max(x => x.Score);
+        }
+        else
+        {
+            return 0;
+        }
     }
 }
