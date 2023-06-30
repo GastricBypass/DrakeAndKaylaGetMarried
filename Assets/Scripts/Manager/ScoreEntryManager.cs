@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class ScoreEntryManager : MonoBehaviour
 {
     public TMP_Text Score;
+    public GameObject NewHighscoreScene;
     public List<TMP_Text> KaylaNameInitials;
     public List<TMP_Text> DrakeNameInitials;
 
@@ -38,6 +39,8 @@ public class ScoreEntryManager : MonoBehaviour
     {
         _scoreKeeper = FindObjectOfType<ScoreKeeper>();
         Score.text = _scoreKeeper.LatestScore.ToString();
+
+        NewHighscoreScene.SetActive(_scoreKeeper.GotNewHighscore);
     }
 
     private void LateUpdate()
@@ -125,6 +128,7 @@ public class ScoreEntryManager : MonoBehaviour
     private void SaveHighscoreEntry()
     {
         _scoreKeeper.NeedsToLogScore = false;
+        _scoreKeeper.GotNewHighscore = false;
         var kaylaName = AggregateInitials(KaylaNameInitials);
         var drakeName = AggregateInitials(DrakeNameInitials);
 

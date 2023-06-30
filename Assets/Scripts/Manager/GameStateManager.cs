@@ -69,6 +69,7 @@ public class GameStateManager : MonoBehaviour
             if (Score > _previousHighscore)
             {
                 Ui.NotifyNewHighscore();
+                _scoreKeeper.GotNewHighscore = true;
             }
         }
     }

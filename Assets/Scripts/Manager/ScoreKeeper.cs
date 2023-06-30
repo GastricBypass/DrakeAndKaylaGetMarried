@@ -9,6 +9,7 @@ public class ScoreKeeper : MonoBehaviour
 {
     public int LatestScore;
     public bool NeedsToLogScore;
+    public bool GotNewHighscore;
 
     private const string fileName = "highscores.dat";
 
