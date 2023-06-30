@@ -2879,6 +2879,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScrollSpeed: 10
+  Autoscroll: 0
+  AutoscrollDelay: 5
+  ElementHeight: 50
 --- !u!1 &1531266151
 GameObject:
   m_ObjectHideFlags: 0
