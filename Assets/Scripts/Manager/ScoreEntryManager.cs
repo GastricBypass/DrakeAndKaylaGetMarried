@@ -8,9 +8,11 @@ using UnityEngine.UI;
 public class ScoreEntryManager : MonoBehaviour
 {
     public TMP_Text Score;
-    public GameObject NewHighscoreScene;
     public List<TMP_Text> KaylaNameInitials;
     public List<TMP_Text> DrakeNameInitials;
+
+    public GameObject NewHighscoreScene;
+    public List<GameObject> ItemsToHideOnHighscoreScreen;
 
     public Transform KaylaSelection;
     public List<float> KaylaSelectionPositions;
@@ -41,6 +43,7 @@ public class ScoreEntryManager : MonoBehaviour
         Score.text = _scoreKeeper.LatestScore.ToString();
 
         NewHighscoreScene.SetActive(_scoreKeeper.GotNewHighscore);
+        UpdateHidableItems(!_scoreKeeper.GotNewHighscore);
     }
 
     private void LateUpdate()
@@ -101,6 +104,14 @@ public class ScoreEntryManager : MonoBehaviour
         }
     }
 
+    private void UpdateHidableItems(bool visible)
+    {
+        foreach (var item in ItemsToHideOnHighscoreScreen)
+        {
+            item.SetActive(visible);
+        }
+    }
+
     private void HandleIndexChangeInputs(string axis, List<TMP_Text> initials, ref int selectedIndex, ref bool changingIndex)
     {
         if (!changingIndex && Input.GetAxis(axis) > 0)
@@ -129,6 +140,8 @@ public class ScoreEntryManager : MonoBehaviour
     {
         _scoreKeeper.NeedsToLogScore = false;
         _scoreKeeper.GotNewHighscore = false;
+        UpdateHidableItems(true);
+
         var kaylaName = AggregateInitials(KaylaNameInitials);
         var drakeName = AggregateInitials(DrakeNameInitials);
 
