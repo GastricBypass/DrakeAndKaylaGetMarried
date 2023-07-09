@@ -11,7 +11,6 @@ public class ScoreDisplay : MonoBehaviour
 
     private void Start()
     {
-        _scoreKeeper = FindObjectOfType<ScoreKeeper>();
         Refresh();
     }
 
