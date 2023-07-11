@@ -20,6 +20,8 @@ public class GameStateManager : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
+
         _scoreKeeper = FindObjectOfType<ScoreKeeper>();
         _players = FindObjectsOfType<Player>();
 

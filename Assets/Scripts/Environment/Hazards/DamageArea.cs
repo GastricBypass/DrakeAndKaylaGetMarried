@@ -10,6 +10,8 @@ public class DamageArea : MonoBehaviour
         var character = collision.GetComponent<Character>();
         if (character != null)
         {
+            Debug.Log(Time.time + ": " + character.name + " collides with " + name);
+            Debug.Log(Time.time + ": " + name + " was at position " + transform.position);
             character.TakeDamage(Damage);
         }
     }

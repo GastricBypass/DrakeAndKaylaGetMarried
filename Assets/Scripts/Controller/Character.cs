@@ -102,6 +102,7 @@ public class Character : MonoBehaviour
         _rigidbody.velocity = CalculateMovement();
         if (IsSquished())
         {
+            Debug.Log(Time.time + ": " + name + " is squished");
             TakeDamage(1);
         }
     }
@@ -123,7 +124,8 @@ public class Character : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        //Debug.Log(name + " takes " + damage + " damage");
+        Debug.Log(Time.time + ": " + name + " takes " + damage + " damage");
+        Debug.Log(Time.time + ": " + name + " was at position " + transform.position);
         if (CurrentHitpoints <= 0) return;
 
         CurrentHitpoints -= damage;
@@ -344,7 +346,23 @@ public class Character : MonoBehaviour
 
     private bool IsSquished()
     {
-        var numCollisions = Physics2D.OverlapCollider(SquishCheckCollider, _wallContactFilter, new Collider2D[1]);
+        var collisions = new Collider2D[2];
+        var numCollisions = Physics2D.OverlapCollider(SquishCheckCollider, _wallContactFilter, collisions);
+
+        var logString = Time.time + ": " + name + " was squished by ";
+        var collisionsMade = false;
+        foreach (var collision in collisions)
+        {
+            if (collision != null)
+            {
+                logString += collision.name + collision.transform.position + ", ";
+                collisionsMade = true;
+            }
+        }
+        if (collisionsMade)
+        {
+            Debug.Log(logString);
+        }
 
         return numCollisions != 0;
     }
