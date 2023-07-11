@@ -95,16 +95,18 @@ public class Character : MonoBehaviour
     private void Update()
     {
         UpdateAnimation();
-    }
-
-    private void FixedUpdate()
-    {
-        _rigidbody.velocity = CalculateMovement();
+        
         if (IsSquished())
         {
             Debug.Log(Time.time + ": " + name + " is squished");
             TakeDamage(1);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        _rigidbody.velocity = CalculateMovement();
+        
     }
 
     public void Pickup()

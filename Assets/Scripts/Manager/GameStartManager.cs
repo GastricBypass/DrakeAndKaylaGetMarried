@@ -9,9 +9,12 @@ public class GameStartManager : MonoBehaviour
 {
     public Image KaylaReady;
     public Image DrakeReady;
+    public float DelayTime;
 
     private bool _kaylaReady = false;
     private bool _drakeReady = false;
+
+    private bool _waitingToLoad = false;
 
     private void LateUpdate()
     {
@@ -25,9 +28,9 @@ public class GameStartManager : MonoBehaviour
             ToggleDrakeReady();
         }
 
-        if (_kaylaReady && _drakeReady)
+        if (_kaylaReady && _drakeReady && !_waitingToLoad)
         {
-            SceneManager.LoadScene("Game");
+            StartCoroutine(WaitAndLoadGame());
         }
     }
 
@@ -41,5 +44,17 @@ public class GameStartManager : MonoBehaviour
     {
         _drakeReady = !_drakeReady;
         DrakeReady.gameObject.SetActive(_drakeReady);
+    }
+
+    private IEnumerator WaitAndLoadGame()
+    {
+        _waitingToLoad = true;
+        yield return new WaitForSeconds(DelayTime);
+        _waitingToLoad = false;
+
+        if (_kaylaReady && _drakeReady)
+        {
+            SceneManager.LoadScene("Game");
+        }
     }
 }

@@ -34,11 +34,10 @@ public class SegmentSpawner : MonoBehaviour
     private void SpawnSegment(Vector3 position)
     {
         var itemIndex = Random.Range(0, SegmentPrefabs.Count);
-        var newPlatform = Instantiate<MovingItem>(SegmentPrefabs[itemIndex]);
+        var newPlatform = Instantiate<MovingItem>(SegmentPrefabs[itemIndex], position, Quaternion.identity);
 
         newPlatform.State = State;
         newPlatform.MovementMultiplier = MovementMultiplier;
-        newPlatform.transform.position = position;
 
         _previousItem = newPlatform;
 
