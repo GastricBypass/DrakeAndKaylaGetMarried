@@ -1597,7 +1597,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8417387835441397264, guid: fc5405a6fb8aebd47a299ce6ea4791f1, type: 3}
       propertyPath: Delay
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8417387835441397264, guid: fc5405a6fb8aebd47a299ce6ea4791f1, type: 3}
       propertyPath: FadeRate
@@ -1693,7 +1693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8417387835441397277, guid: fc5405a6fb8aebd47a299ce6ea4791f1, type: 3}
       propertyPath: m_text
-      value: Get Kayla and Drake to the wedding!
+      value: Get Kayla and Drake to their wedding!
       objectReference: {fileID: 0}
     - target: {fileID: 8417387835441397277, guid: fc5405a6fb8aebd47a299ce6ea4791f1, type: 3}
       propertyPath: m_fontSize
